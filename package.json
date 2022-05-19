@@ -6,7 +6,8 @@
     "main": ".eslintrc.js",
     "scripts": {
         "test": "jest --watchAll --coverage",
-        "lint": "eslint ."
+        "lint": "eslint .", 
+        "husky": "prepare"
     },
     "keywords": [],
     "author": "",
@@ -18,6 +19,7 @@
         "@babel/plugin-transform-modules-commonjs": "^7.17.9",
         "eslint": "^8.15.0",
         "eslint-config-prettier": "^8.5.0",
+        "husky": "^8.0.1",
         "jest": "^28.1.0"
     },
     "babel": {
