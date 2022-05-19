@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { createArray } from './newArray';
+import { createArray } from './newArray.js';
 
 let canvas;
 let ctx;
