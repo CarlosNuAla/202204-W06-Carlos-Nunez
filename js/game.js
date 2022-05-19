@@ -1,3 +1,4 @@
+/* eslint-disable no-self-assign */
 /* eslint-disable no-unused-vars */
 import { createArray } from './newArray.js';
 
@@ -15,6 +16,19 @@ const columns = 100;
 
 const white = '#FFFFFF';
 const black = '#000000';
+
+let agent = function (x, y, status) {
+    this.x = x;
+    this.y = y;
+    this.status = status;
+    this.statusZone = this.status;
+    this.neighbour = [];
+
+    this.addNeighbours = function () {
+        let xNeig;
+        let yNeig;
+    };
+};
 
 initialize();
 function initialize() {
@@ -34,6 +48,12 @@ function initialize() {
     }, 3000 / fps);
 }
 
+function deleteCanvas() {
+    canvas.widht = canvas.widht;
+    canvas.height = canvas.height;
+}
+
 function principal() {
+    deleteCanvas();
     console.log('fotograma');
 }
