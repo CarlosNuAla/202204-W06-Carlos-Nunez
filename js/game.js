@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { createArray } from './newArray';
+import { createArray } from './newArray.js';
 
 let canvas;
 let ctx;
@@ -16,6 +16,7 @@ const columns = 100;
 const white = '#FFFFFF';
 const black = '#000000';
 
+initialize();
 function initialize() {
     canvas = document.getElementById('canvas');
     ctx = canvas.getContext('2D');
