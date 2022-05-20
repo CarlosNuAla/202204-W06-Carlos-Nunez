@@ -1,7 +1,6 @@
-/* eslint-disable no-self-assign */
 /* eslint-disable no-unused-vars */
 import { createArray } from './newArray.js';
-import { initializeBoard } from './iniBoard.js';
+import { deleteCanvas } from './deleteCanvas.js';
 
 let canvas;
 let ctx;
@@ -25,7 +24,7 @@ const Agent = function (x, y, status) {
     this.statusZone = this.status;
     this.neighbour = [];
 
-    this.addNeighbours = (board, lines, columns) => {
+    this.addNeighbours = function () {
         let xNeig;
         let yNeig;
         for (let i = -1; i < 2; i++) {
@@ -39,12 +38,37 @@ const Agent = function (x, y, status) {
             }
         }
     };
+    this.paint = function () {
+        let colour;
+        if (this.status === 1) {
+            colour = green;
+        } else {
+            colour = black;
+        }
+        ctx.fillStyle = colour;
+        ctx.fillRect(this.x * tileX, this.y * tileY, tileX, tileY);
+    };
+};
+
+const initializeBoard = (obj) => {
+    let status;
+    for (let i = 0; i < lines; i++) {
+        for (let j = 0; j < columns; j++) {
+            status = Math.floor(Math.random() * 2);
+            obj[i][j] = new Agent(i, j, status);
+        }
+    }
+    for (let i = 0; i < lines; i++) {
+        for (let j = 0; j < columns; j++) {
+            obj[i][j].addNeighbours();
+        }
+    }
 };
 
 initialize();
 function initialize() {
     canvas = document.getElementById('canvas');
-    ctx = canvas.getContext('2D');
+    ctx = canvas.getContext('2d');
 
     canvas.widht = canvasX;
     canvas.height = canvasY;
@@ -61,12 +85,7 @@ function initialize() {
     }, 5000 / fps);
 }
 
-function deleteCanvas() {
-    canvas.widht = canvas.widht;
-    canvas.height = canvas.height;
-}
-
 function principal() {
-    deleteCanvas();
+    deleteCanvas(canvas);
     console.log('fotograma');
 }
