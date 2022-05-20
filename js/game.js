@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { createArray } from './newArray.js';
 import { deleteCanvas } from './deleteCanvas.js';
 
@@ -48,6 +47,23 @@ const Agent = function (x, y, status) {
         ctx.fillStyle = colour;
         ctx.fillRect(this.x * tileX, this.y * tileY, tileX, tileY);
     };
+    this.newCycle = function () {
+        let add = 0;
+        for (let i = 0; i < this.neighbour.length; i++) {
+            add += this.neighbour[i].status;
+        }
+        this.statusZone = this.status;
+
+        if (add < 2 || add > 3) {
+            this.statusZone = 0;
+        }
+        if (add === 3) {
+            this.statusZone = 1;
+        }
+    };
+    this.mutation = function () {
+        this.status = this.statusZone;
+    };
 };
 
 const initializeBoard = (obj) => {
@@ -82,10 +98,18 @@ function initialize() {
 
     setInterval(function () {
         principal();
-    }, 5000 / fps);
+    }, 1000 / fps);
 }
 
 function principal() {
     deleteCanvas(canvas);
-    console.log('fotograma');
+    drawBoard(board);
+}
+
+function drawBoard(obj) {
+    for (let i = 0; i < lines; i++) {
+        for (let j = 0; j < columns; j++) {
+            obj[i][j].paint();
+        }
+    }
 }
