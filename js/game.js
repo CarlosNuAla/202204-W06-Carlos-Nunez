@@ -5,13 +5,13 @@ let canvas;
 let ctx;
 const fps = 30;
 
-const canvasX = 500;
-const canvasY = 500;
+const canvasX = 750;
+const canvasY = 750;
 let tileX, tileY;
 
 let board;
-const lines = 100;
-const columns = 100;
+const lines = 200;
+const columns = 200;
 
 const black = '#000000';
 const green = '#0aaf04';
@@ -71,7 +71,7 @@ const initializeBoard = (obj) => {
     for (let i = 0; i < lines; i++) {
         for (let j = 0; j < columns; j++) {
             status = Math.floor(Math.random() * 2);
-            obj[i][j] = new Agent(i, j, status);
+            obj[i][j] = new Agent(j, i, status);
         }
     }
     for (let i = 0; i < lines; i++) {
@@ -98,7 +98,7 @@ function initialize() {
 
     setInterval(function () {
         principal();
-    }, 1000 / fps);
+    }, 1500 / fps);
 }
 
 function principal() {
@@ -110,6 +110,16 @@ function drawBoard(obj) {
     for (let i = 0; i < lines; i++) {
         for (let j = 0; j < columns; j++) {
             obj[i][j].paint();
+        }
+    }
+    for (let i = 0; i < lines; i++) {
+        for (let j = 0; j < columns; j++) {
+            obj[i][j].newCycle();
+        }
+    }
+    for (let i = 0; i < lines; i++) {
+        for (let j = 0; j < columns; j++) {
+            obj[i][j].mutation();
         }
     }
 }
