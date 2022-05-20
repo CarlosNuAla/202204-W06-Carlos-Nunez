@@ -1,6 +1,7 @@
 /* eslint-disable no-self-assign */
 /* eslint-disable no-unused-vars */
 import { createArray } from './newArray.js';
+import { agent } from './agent.js';
 
 let canvas;
 let ctx;
@@ -15,20 +16,7 @@ const lines = 100;
 const columns = 100;
 
 const white = '#FFFFFF';
-const black = '#000000';
-
-let agent = function (x, y, status) {
-    this.x = x;
-    this.y = y;
-    this.status = status;
-    this.statusZone = this.status;
-    this.neighbour = [];
-
-    this.addNeighbours = function () {
-        let xNeig;
-        let yNeig;
-    };
-};
+const green = '#0aaf04';
 
 initialize();
 function initialize() {
@@ -45,7 +33,7 @@ function initialize() {
 
     setInterval(function () {
         principal();
-    }, 3000 / fps);
+    }, 5000 / fps);
 }
 
 function deleteCanvas() {
