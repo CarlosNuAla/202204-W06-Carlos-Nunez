@@ -1,5 +1,7 @@
+/* eslint-disable no-self-assign */
 /* eslint-disable no-unused-vars */
 import { createArray } from './newArray.js';
+import { agent } from './agent.js';
 
 let canvas;
 let ctx;
@@ -14,7 +16,7 @@ const lines = 100;
 const columns = 100;
 
 const white = '#FFFFFF';
-const black = '#000000';
+const green = '#0aaf04';
 
 initialize();
 function initialize() {
@@ -31,9 +33,15 @@ function initialize() {
 
     setInterval(function () {
         principal();
-    }, 3000 / fps);
+    }, 5000 / fps);
+}
+
+function deleteCanvas() {
+    canvas.widht = canvas.widht;
+    canvas.height = canvas.height;
 }
 
 function principal() {
+    deleteCanvas();
     console.log('fotograma');
 }
