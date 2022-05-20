@@ -5,13 +5,13 @@ let canvas;
 let ctx;
 const fps = 30;
 
-const canvasX = 750;
-const canvasY = 750;
+const canvasX = 2000;
+const canvasY = 2000;
 let tileX, tileY;
 
 let board;
-const lines = 200;
-const columns = 200;
+const lines = 300;
+const columns = 300;
 
 const black = '#000000';
 const green = '#0aaf04';
@@ -98,7 +98,7 @@ function initialize() {
 
     setInterval(function () {
         principal();
-    }, 1500 / fps);
+    }, 2000 / fps);
 }
 
 function principal() {
